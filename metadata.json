@@ -1,0 +1,6 @@
+{
+  "name": "STR Cleanservice",
+  "description": "Premium Cleaning Company in Erbil, Iraq. Over 30 years of experience providing eco-friendly, professional cleaning services for homes, villas, offices, hospitals, airports, and commercial buildings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
