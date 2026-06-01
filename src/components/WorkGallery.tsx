@@ -75,7 +75,7 @@ export const WorkGallery: React.FC<GalleryProps> = ({ lang, t }) => {
       locationEn: "100m Road, Erbil",
       beforeImg: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80", // Medical ward dusty corner
       afterImg: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80", // Hospital sanitised zone
-      detailsAr: "تعقّم مستمر بمطهرات طبية سويسرية للقضاء على الفيروسات والبكتريا بنسبة 99.9%.",
+      detailsAr: "تعقّم مستمر بمطهرات طبية أوروبية للقضاء على الفيروسات والبكتريا بنسبة 99.9%.",
       detailsEn: "Clinical-grade micro-fogging sterilisation destroying 99.9% of germs and cross-infection vectors."
     },
     {

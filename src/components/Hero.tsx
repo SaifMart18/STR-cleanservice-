@@ -92,7 +92,7 @@ export const Hero: React.FC<HeroProps> = ({
           >
             <Sparkles className="h-4 w-4 text-brand-cyan animate-pulse shrink-0" />
             <span className={lang === "ar" ? "mr-2" : "ml-2"}>
-              {lang === "ar" ? "أكثر من 30 عاماً من الخبرة السويسرية والوطنية" : "Over 30 Years of Premium Trustworthy Experience"}
+              {lang === "ar" ? "أكثر من 30 عاماً من الخبرة الأوروبية والوطنية" : "Over 30 Years of Premium Trustworthy Experience"}
             </span>
           </div>
 
@@ -159,7 +159,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
             <div className={lang === "ar" ? "pr-3 text-right" : "pl-3 text-left"}>
               <h4 className="text-white text-xs font-bold">{lang === "ar" ? "صديقة للبيئة والصحة" : "Odorless & Bio-safe"}</h4>
-              <span className="text-white/60 text-[10px] block mt-0.5">{lang === "ar" ? "مواد سويسرية معقمة" : "100% Kid & Pet Safe"}</span>
+              <span className="text-white/60 text-[10px] block mt-0.5">{lang === "ar" ? "مواد أوروبية معقمة" : "100% Kid & Pet Safe"}</span>
             </div>
           </div>
         </div>
