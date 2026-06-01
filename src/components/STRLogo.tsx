@@ -15,75 +15,24 @@ export const STRLogo: React.FC<STRLogoProps> = ({
 }) => {
   // Dimensions based on size
   const logoSizes = {
-    sm: { img: "h-8 w-8", text: "text-lg", sub: "text-[8px]" },
-    md: { img: "h-14 w-14", text: "text-2xl", sub: "text-[10px]" },
-    lg: { img: "h-24 w-24", text: "text-4xl", sub: "text-xs" },
-    xl: { img: "h-36 w-36", text: "text-5xl", sub: "text-sm" },
+    sm: { img: "h-14 md:h-16 w-auto max-w-[180px]", text: "text-xl", sub: "text-[10px]" },
+    md: { img: "h-24 md:h-28 w-auto max-w-[240px]", text: "text-2xl", sub: "text-[11px]" },
+    lg: { img: "h-36 md:h-44 w-auto max-w-[320px]", text: "text-4xl", sub: "text-xs" },
+    xl: { img: "h-48 md:h-56 w-auto max-w-[400px]", text: "text-5xl", sub: "text-sm" },
   };
 
   const currentSize = logoSizes[size];
 
   return (
     <div className={`flex flex-col items-center justify-center ${className}`} id="str-logo-container">
-      {/* Dynamic Vector SVG Shield for STR Monogram */}
-      <svg
-        viewBox="0 0 200 200"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className={`${currentSize.img} transform transition-transform duration-500 hover:scale-105`}
-        aria-hidden="true"
-        id="str-logo-svg"
-      >
-        {/* Modern Hexagonal Shield Structure */}
-        {/* Background Subtle Sparkle Effect */}
-        <path
-          d="M100 20 L160 50 L160 115 C160 150 100 180 100 180 C100 180 40 150 40 115 L40 50 Z"
-          fill="none"
-          stroke="#0D4EA6"
-          strokeWidth="10"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-
-        {/* The 'S' flow inside the left area of the shield */}
-        <path
-          d="M80 55 C58 55 58 85 80 88 C102 91 102 118 80 121 C58 121 58 110 58 110"
-          stroke="#0D4EA6"
-          strokeWidth="11"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-
-        {/* The 'R' leg structure on the right side of the shield */}
-        <path
-          d="M120 54 H138 C148 54 148 85 138 85 H120 V122 M135 85 L146 120"
-          stroke="#0D4EA6"
-          strokeWidth="11"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-
-        {/* The Cyan 'T' centerpiece of the logo */}
-        <path
-          d="M100 54 V145"
-          stroke="#28D7E5"
-          strokeWidth="13"
-          strokeLinecap="round"
-        />
-        <path
-          d="M78 54 H122"
-          stroke="#28D7E5"
-          strokeWidth="13"
-          strokeLinecap="round"
-        />
-        <path
-          d="M78 54 L100 35 L122 54"
-          stroke="#28D7E5"
-          strokeWidth="11"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      {/* Dynamic Company Logo Image from Google Drive */}
+      <img
+        src="https://lh3.googleusercontent.com/d/1ESf0ndT4EyJwDN_AbOVKa9AZwuow6oHn"
+        alt="STR Cleanservice Logo"
+        className={`${currentSize.img} object-contain rounded-lg transform transition-transform duration-500 hover:scale-105`}
+        referrerPolicy="no-referrer"
+        id="str-logo-img"
+      />
 
       {showText && (
         <div className="text-center mt-2 font-cairo tracking-wide flex flex-col items-center">
