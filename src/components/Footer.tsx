@@ -3,9 +3,7 @@ import { STRLogo } from "./STRLogo";
 import { TranslationDict } from "../types";
 import {
   Facebook,
-  Instagram,
   Phone,
-  Mail,
   MapPin,
   Clock,
   ArrowUp,
@@ -63,22 +61,13 @@ export const Footer: React.FC<FooterProps> = ({ lang, t }) => {
             {/* Social channels block */}
             <div className={`flex items-center ${lang === "ar" ? "space-x-reverse" : ""} space-x-3`} id="footer-social-panel">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=100064161367319"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-9 w-9 bg-white/5 hover:bg-brand-blue text-white rounded-xl flex items-center justify-center transition-all duration-300 border border-white/5"
                 aria-label="Follow us on Facebook"
               >
                 <Facebook className="h-4.5 w-4.5" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-9 w-9 bg-white/5 hover:bg-brand-cyan hover:text-brand-dark text-white rounded-xl flex items-center justify-center transition-all duration-300 border border-white/5"
-                aria-label="Follow us on Instagram"
-              >
-                <Instagram className="h-4.5 w-4.5" />
               </a>
               <a
                 href="https://wa.me/9647507120332"
@@ -185,13 +174,6 @@ export const Footer: React.FC<FooterProps> = ({ lang, t }) => {
                 <Phone className={`h-4.5 w-4.5 text-brand-cyan shrink-0 ${lang === "ar" ? "ml-2.5" : "mr-2.5"}`} />
                 <a href="tel:+9647507120332" className="hover:text-brand-cyan transition-colors" style={{ direction: "ltr" }}>
                   0750 712 0332
-                </a>
-              </li>
-
-              <li className="flex items-center space-x-2.5">
-                <Mail className={`h-4.5 w-4.5 text-brand-cyan shrink-0 ${lang === "ar" ? "ml-2.5" : "mr-2.5"}`} />
-                <a href="mailto:info@str-cleanservice.com" className="hover:text-brand-cyan transition-colors" style={{ fontFamily: "Inter, sans-serif" }}>
-                  info@str-cleanservice.com
                 </a>
               </li>
 

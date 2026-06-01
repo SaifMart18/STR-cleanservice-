@@ -3,7 +3,6 @@ import { TranslationDict } from "../types";
 import {
   MapPin,
   PhoneCall,
-  Mail,
   Clock,
   CheckCircle2,
   Send,
@@ -26,7 +25,6 @@ export const Contact: React.FC<ContactProps> = ({
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    email: "",
     serviceType: "",
     message: ""
   });
@@ -62,21 +60,49 @@ export const Contact: React.FC<ContactProps> = ({
 
     setIsSubmitting(true);
 
-    // Simulate reliable API endpoint submission response
+    // Build the pre-filled WhatsApp message
+    const whatsappNumber = "9647507120332";
+    let text = "";
+    if (lang === "ar") {
+      text = `السلام عليكم شركة STR Cleanservice، أريد تقديم طلب خدمة جديد:\n\n` +
+             `👤 *الاسم:* ${formData.name}\n` +
+             `📞 *رقم الهاتف:* ${formData.phone}\n`;
+      if (formData.serviceType) {
+        text += `🧼 *نوع الخدمة المطلوبة:* ${formData.serviceType}\n`;
+      }
+      if (formData.message) {
+        text += `📝 *تفاصيل إضافية:* ${formData.message}\n`;
+      }
+    } else {
+      text = `Hello STR Cleanservice, I would like to request a new service:\n\n` +
+             `👤 *Name:* ${formData.name}\n` +
+             `📞 *Phone:* ${formData.phone}\n`;
+      if (formData.serviceType) {
+        text += `🧼 *Service Required:* ${formData.serviceType}\n`;
+      }
+      if (formData.message) {
+        text += `📝 *Additional Details:* ${formData.message}\n`;
+      }
+    }
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
     setTimeout(() => {
+      // Open WhatsApp direct message link
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
       setIsSubmitting(false);
       setIsSubmitSuccess(true);
       setFormData({
         name: "",
         phone: "",
-        email: "",
         serviceType: "",
         message: ""
       });
 
-      // Clear success badge after 8 seconds
+      // Clear success badge after 9 seconds
       setTimeout(() => setIsSubmitSuccess(false), 9000);
-    }, 1200);
+    }, 800);
   };
 
   return (
@@ -161,24 +187,6 @@ export const Contact: React.FC<ContactProps> = ({
                 </div>
 
                 {/* Email Address */}
-                <div className={`flex items-start ${lang === "ar" ? "space-x-reverse" : ""} space-x-4`} id="contact-item-email">
-                  <div className="h-10 w-10 bg-brand-blue/5 text-brand-blue rounded-xl flex items-center justify-center shrink-0">
-                    <Mail className="h-5.5 w-5.5" />
-                  </div>
-                  <div className={lang === "ar" ? "pr-1 text-right" : "pl-1 text-left"}>
-                    <h4 className="text-xs font-bold text-brand-dark/50 uppercase tracking-widest leading-none">
-                      {t.contactEmailLbl}
-                    </h4>
-                    <a
-                      href="mailto:info@str-cleanservice.com"
-                      className="text-sm font-extrabold text-brand-dark hover:text-brand-blue transition-colors mt-1.5 inline-block"
-                      style={{ fontFamily: "'Inter', sans-serif" }}
-                    >
-                      info@str-cleanservice.com
-                    </a>
-                  </div>
-                </div>
-
                 {/* Operational hours */}
                 <div className={`flex items-start ${lang === "ar" ? "space-x-reverse" : ""} space-x-4`} id="contact-item-hours">
                   <div className="h-10 w-10 bg-brand-blue/5 text-brand-blue rounded-xl flex items-center justify-center shrink-0">
@@ -299,42 +307,24 @@ export const Contact: React.FC<ContactProps> = ({
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4" id="form-mid-row">
-                  {/* Email address field */}
-                  <div className="flex flex-col" id="form-email-field">
-                    <label className="text-xs font-bold text-brand-dark/70 mb-1.5">
-                      {t.contactEmail}
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="e.g. office@example.com"
-                      className="w-full bg-brand-light border border-brand-dark/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all text-left"
-                      style={{ direction: "ltr", fontFamily: "'Inter', sans-serif" }}
-                    />
-                  </div>
-
-                  {/* Dropdown service selector field */}
-                  <div className="flex flex-col" id="form-service-field">
-                    <label className="text-xs font-bold text-brand-dark/70 mb-1.5">
-                      {t.contactServiceType}
-                    </label>
-                    <select
-                      name="serviceType"
-                      value={formData.serviceType}
-                      onChange={handleInputChange}
-                      className="w-full bg-brand-light border border-brand-dark/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all"
-                    >
-                      <option value="">{t.contactServiceSelect}</option>
-                      {t.servicesList.map((service) => (
-                        <option key={service.id} value={service.title}>
-                          {service.title}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                {/* Dropdown service selector field */}
+                <div className="flex flex-col" id="form-service-field">
+                  <label className="text-xs font-bold text-brand-dark/70 mb-1.5">
+                    {t.contactServiceType}
+                  </label>
+                  <select
+                    name="serviceType"
+                    value={formData.serviceType}
+                    onChange={handleInputChange}
+                    className="w-full bg-brand-light border border-brand-dark/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all"
+                  >
+                    <option value="">{t.contactServiceSelect}</option>
+                    {t.servicesList.map((service) => (
+                      <option key={service.id} value={service.title}>
+                        {service.title}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 {/* Message field */}

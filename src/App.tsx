@@ -49,6 +49,21 @@ export default function App() {
     }
   };
 
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById("services");
+    if (servicesSection) {
+      const offset = 90;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = servicesSection.getBoundingClientRect().top;
+      const position = elementRect - bodyRect - offset;
+
+      window.scrollTo({
+        top: position,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <>
       {/* 1. Loading Pre-Loader Overlay Screen */}
@@ -75,7 +90,7 @@ export default function App() {
           <Hero
             lang={lang}
             t={t}
-            onRequestQuote={() => navigateToContactWithService("")}
+            onViewServices={scrollToServices}
             onContactUs={() => navigateToContactWithService("")}
           />
 
